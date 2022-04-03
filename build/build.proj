@@ -53,18 +53,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<TargetFrameworkModern Include=".NET Framework 3.5">
+		<!-- <TargetFrameworkModern Include=".NET Framework 3.5">
 			<OutputDirectory>Renci.SshNet\bin\$(Configuration)\net35</OutputDirectory>
 			<Moniker>net35</Moniker>
-		</TargetFrameworkModern>
-		<TargetFrameworkModern Include=".NET Framework 4.0">
+		</TargetFrameworkModern> -->
+		<!-- <TargetFrameworkModern Include=".NET Framework 4.0">
 			<OutputDirectory>Renci.SshNet\bin\$(Configuration)\net40</OutputDirectory>
 			<Moniker>net40</Moniker>
 		</TargetFrameworkModern>
 		<TargetFrameworkModern Include=".NETStandard 1.3">
 			<OutputDirectory>Renci.SshNet\bin\$(Configuration)\netstandard1.3</OutputDirectory>
 			<Moniker>netstandard1.3</Moniker>
-		</TargetFrameworkModern>
+		</TargetFrameworkModern> -->
 		<TargetFrameworkModern Include=".NETStandard 2.0">
 			<OutputDirectory>Renci.SshNet\bin\$(Configuration)\netstandard2.0</OutputDirectory>
 			<Moniker>netstandard2.0</Moniker>
@@ -131,7 +131,7 @@
 	
 	<Target Name="Package" DependsOnTargets="CreateNuGetPackage;CreateBinPackage;GenerateHelpFile"/>
 	
-	<Target Name="ValidatePackage" DependsOnTargets="ValidatePackageClassic;ValidatePackageModern"/>
+	<Target Name="ValidatePackage" DependsOnTargets="ValidatePackageModern"/>
 	
 	<Target Name="ValidatePackageClassic" DependsOnTargets="CheckNuGetPackageDirectory" Outputs="%(TargetFrameworkClassic.Identity)">
 		<Error Text="The 'Renci.SshNet.dll' file is not available for %(TargetFrameworkClassic.Identity) in $(NuGetPackageDirectory)\lib\%(TargetFrameworkClassic.Moniker)." Condition="!Exists('$(NuGetPackageDirectory)\lib\%(TargetFrameworkClassic.Moniker)\Renci.SshNet.dll')"/>
